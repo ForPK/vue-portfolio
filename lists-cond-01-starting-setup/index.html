@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enteredGoalValue" />
+      <button @click="addGoal">Add Goal</button>
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <li v-for="(goal, index) in goals" @click="removeGoal(index)">
+          <p>{{ (index + 1) }}. {{ goal }}</p>
+          <input type="text" @click.stop />
+        </li>
+      </ul>
+
+      <!-- <ul> -->
+        <!-- index도 넣을 수 있음 -->
+        <!-- li v-for="(goal, index) in goals">{{ goal }} - {{ (index + 1) }}</li> -->
+
+        <!-- 추가한 객체와 프로퍼티에 루프를 걸 수 있음(객체에 루프 걸기 가능)  -->
+        <!-- <li v-for="(value, key, index) in {name: 'Max', age: 31}">{{ key }}: {{ value }} - {{ (index + 1) }}</li> -->
+        
+        <!-- 숫자 루프 가능 num과 in 키워드 이용 -->
+        <!-- <li v-for="(num, index) in 10">{{ num }} {{index}}</li> -->
+      <!-- </ul> -->
+    </section>
+  </body>
+</html>
